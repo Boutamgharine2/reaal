@@ -1,0 +1,48 @@
+connManager {
+
+}
+
+client {
+
+}
+
+message {
+
+}
+
+userStatus {
+
+}
+
+func wsHandler (cm *connManager, db) http.handlerfunc {
+
+}
+
+func handleHistorychat() http.handlerfunc {
+    
+}
+
+func (cn *connManager) Run {
+    for {
+        select {
+        case : reg
+            lock 
+            // bash ma ytrash lik data race
+            unlock
+        case : unreg
+            lock 
+            // bash ma ytrash lik data race
+            unlock
+        case : send
+            lock 
+            // bash ma ytrash lik data race
+            unlock
+     }
+    }
+}
+
+main(){
+    cm := ...
+    go Run()
+    http.
+}

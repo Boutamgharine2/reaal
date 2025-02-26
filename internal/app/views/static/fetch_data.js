@@ -11,6 +11,63 @@ let post_title = document.querySelector(".post_title")
 let post_content = document.querySelector(".post_content")
 let post_category = document.querySelectorAll(".category")
 let load_more = document.querySelector(".load_more")
+let div0 = document.createElement("div")
+let div_pop = document.querySelector(".form-popup");
+//div_pop.style.display="none";
+let cancel_botton =document.getElementById("cancel");
+let login_botton = document.getElementById("login_button");
+const pop = document.querySelector(".form-container")
+console.log(login_botton);
+
+
+//pop.style.display ="block"
+// cancel_botton.onclick=()=>{
+//     div_pop.style.display="none";
+//     document.body.removeChild(div0);
+//     closeForm();
+
+    
+    
+    
+// };
+login_botton.onclick=()=>{
+    console.log("hhhhhhhhhhhhhhh");
+    
+   
+    CreatLoginePage();
+};
+
+
+function openForm() {
+    //debugger    
+    document.querySelector(".form-popup").style.display="block"
+    pop.style.display = "block";
+    
+    
+    
+    
+}
+function closeForm() {
+    pop.style.display = "none";
+    document.body.removeChild(".pop_up");
+
+    
+}
+function CreatLoginePage(){
+    let logindiv = document.createElement("div");
+    logindiv.className="form-popup";
+    let loginForm = document.createElement("form");
+    loginForm.className="form-container";
+    let hedding = document.createElement("h2");
+    hedding.textContent="Veuillez vous connecter";
+    loginForm.appendChild(hedding);
+    
+    logindiv.appendChild(loginForm);
+    
+    document.body.appendChild(logindiv);
+    loginForm.style.display="block"
+    
+}
 
 
 submit_post.onclick = async function (event) {
