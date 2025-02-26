@@ -261,6 +261,9 @@ fieldset {
 }
 
 /*******************************************popformat******************************************************/
+.popup-overly{
+    
+}
 /* Fixer le bouton sur le côté gauche de la page */
 .open-btn {
     display: flex;

@@ -3,7 +3,7 @@ import { reacPost } from "./reactPost.js";
 import { comment } from "./comment.js";
 import { Registred } from "./registred.js";
 import { filter } from "./filter.js";
-import { reactComment } from "./reactComment.js";
+// import { reactComment } from "./reactComment.js";
 
 
 let submit_post = document.querySelector(".post_btn")
@@ -31,10 +31,12 @@ console.log(login_botton);
     
 // };
 login_botton.onclick=()=>{
-    console.log("hhhhhhhhhhhhhhh");
+    const cnt = document.getElementById("container");
+    console.log(cnt);
     
+    cnt.remove();
    
-    CreatLoginePage();
+    CreatLoginPage();
 };
 
 
@@ -53,20 +55,63 @@ function closeForm() {
 
     
 }
-function CreatLoginePage(){
-    let logindiv = document.createElement("div");
-    logindiv.className="form-popup";
-    let loginForm = document.createElement("form");
-    loginForm.className="form-container";
-    let hedding = document.createElement("h2");
-    hedding.textContent="Veuillez vous connecter";
+function CreatLoginPage(){
+  
+     let overly = document.createElement("div");
+     overly.classNames="popup-overly";
+     document.body.appendChild(overly);
+    // coverdiv.style.backgroundColor="rgba(187,187,187,0,9)";
+    // coverdiv.style.width="100%";
+    // coverdiv.style.height="100%";
+    // document.body.appendChild(coverdiv);
+    
+    let loginDiv =document.createElement("div");
+    loginDiv.style.width="500px"
+    loginDiv.style.height="500px"
+    loginDiv.style.margin="auto"
+    loginDiv.className="divlogin"
+    let loginForm = document.createElement('form');
+    loginForm.className="loginform";
+    let hedding= document.createElement("h2");
+    hedding.textContent="Login";
     loginForm.appendChild(hedding);
-    
-    logindiv.appendChild(loginForm);
-    
-    document.body.appendChild(logindiv);
-    loginForm.style.display="block"
-    
+    loginDiv.appendChild(loginForm);
+    let firsthed = document.createElement("h3");
+    firsthed.textContent="enter your email or username";
+    firsthed.style.textAlign="center";
+    firsthed.style.fontSize="20px";
+    loginDiv.appendChild(firsthed);
+    let firstInput = document.createElement("input");
+    firstInput.placeholder="enter your email";
+    firstInput.style.width="100%";
+    firstInput.style.height="20%";
+    loginDiv.appendChild(firstInput);
+    let secondhead = document.createElement('h3');
+    secondhead.textContent="enter your password";
+    secondhead.style.textAlign="center";
+    secondhead.style.fontSize="20px";
+    loginDiv.appendChild(secondhead);
+    let secondInput = document.createElement("input");
+ secondInput.placeholder="enter your password";
+ secondInput.style.width="100%";
+ secondInput.style.height="20%";
+ loginDiv.appendChild(secondInput);
+let loginbottun = document.createElement("button");
+loginbottun.textContent="submit";
+loginbottun.style.height="15%";
+loginbottun.style.width="100%";
+loginbottun.style.margin="6px 0px 6px 0px"
+loginDiv.appendChild(loginbottun);
+    document.body.prepend(loginDiv);
+    console.log(loginDiv);
+    let registerbutton = document.createElement("button");
+registerbutton.textContent="register";
+registerbutton.style.height="15%";
+registerbutton.style.width="100%";
+registerbutton.style.margin="6px 0px 6px 0px"
+loginDiv.appendChild(registerbutton);
+    document.body.appendChild(loginDiv);
+    console.log(loginDiv);
 }
 
 
