@@ -32,11 +32,12 @@ console.log(login_botton);
 // };
 login_botton.onclick=()=>{
     const cnt = document.getElementById("container");
-    console.log(cnt);
+    
     
     cnt.remove();
+    document.querySelector(".navbar").style.display="none";
    
-    CreatLoginPage();
+    createLoginForm() ;
 };
 
 
@@ -55,64 +56,85 @@ function closeForm() {
 
     
 }
-function CreatLoginPage(){
-  
-     let overly = document.createElement("div");
-     overly.classNames="popup-overly";
-     document.body.appendChild(overly);
-    // coverdiv.style.backgroundColor="rgba(187,187,187,0,9)";
-    // coverdiv.style.width="100%";
-    // coverdiv.style.height="100%";
-    // document.body.appendChild(coverdiv);
+function createLoginForm() {
+    // Créer la div contenant tout le formulaire
+    let formContainer = document.createElement("div");
+    formContainer.className = "form-container";
+
+    // Créer le titre du formulaire
+    let h2 = document.createElement("h2");
+    h2.textContent = "Login";
+    formContainer.appendChild(h2);
+
+    // Créer le formulaire
+    let form = document.createElement("form");
+    form.method = "post";
+    form.className = "login_form";
+
+    // Créer le label pour l'email ou le nom d'utilisateur
+    let labelEmail = document.createElement("label");
+    labelEmail.setAttribute("for", "email");
+    labelEmail.textContent = "EMAIL OR USERNAME:";
+    form.appendChild(labelEmail);
+
+    // Créer l'input pour l'email ou le nom d'utilisateur
+    let emailInput = document.createElement("input");
+    emailInput.type = "text";
+    emailInput.id = "email";
+    emailInput.name = "emailorusername";
+    emailInput.placeholder = "Email or Username";
+    emailInput.required = true;
+    form.appendChild(emailInput);
+
+    // Créer le label pour le mot de passe
+    let labelPassword = document.createElement("label");
+    labelPassword.setAttribute("for", "password");
+    labelPassword.textContent = "PASSWORD:";
+    form.appendChild(labelPassword);
+
+    // Créer l'input pour le mot de passe
+    let passwordInput = document.createElement("input");
+    passwordInput.type = "password";
+    passwordInput.id = "password";
+    passwordInput.name = "password";
+    passwordInput.placeholder = "Setup your password";
+    passwordInput.required = true;
+    form.appendChild(passwordInput);
+
+    // Créer le label pour le bouton de connexion
+    // let loginButtonLabel = document.createElement("label");
+    // loginButtonLabel.className = "login_button";
+    // loginButtonLabel.textContent = "Login";
+    // form.appendChild(loginButtonLabel);
+
+    // Créer l'input de soumission du formulaire
+    let submitInput = document.createElement("input");
+    submitInput.type = "submit";
+    submitInput.value = "Login";
+    form.appendChild(submitInput);
     
-    let loginDiv =document.createElement("div");
-    loginDiv.style.width="500px"
-    loginDiv.style.height="500px"
-    loginDiv.style.margin="auto"
-    loginDiv.className="divlogin"
-    let loginForm = document.createElement('form');
-    loginForm.className="loginform";
-    let hedding= document.createElement("h2");
-    hedding.textContent="Login";
-    loginForm.appendChild(hedding);
-    loginDiv.appendChild(loginForm);
-    let firsthed = document.createElement("h3");
-    firsthed.textContent="enter your email or username";
-    firsthed.style.textAlign="center";
-    firsthed.style.fontSize="20px";
-    loginDiv.appendChild(firsthed);
-    let firstInput = document.createElement("input");
-    firstInput.placeholder="enter your email";
-    firstInput.style.width="100%";
-    firstInput.style.height="20%";
-    loginDiv.appendChild(firstInput);
-    let secondhead = document.createElement('h3');
-    secondhead.textContent="enter your password";
-    secondhead.style.textAlign="center";
-    secondhead.style.fontSize="20px";
-    loginDiv.appendChild(secondhead);
-    let secondInput = document.createElement("input");
- secondInput.placeholder="enter your password";
- secondInput.style.width="100%";
- secondInput.style.height="20%";
- loginDiv.appendChild(secondInput);
-let loginbottun = document.createElement("button");
-loginbottun.textContent="submit";
-loginbottun.style.height="15%";
-loginbottun.style.width="100%";
-loginbottun.style.margin="6px 0px 6px 0px"
-loginDiv.appendChild(loginbottun);
-    document.body.prepend(loginDiv);
-    console.log(loginDiv);
-    let registerbutton = document.createElement("button");
-registerbutton.textContent="register";
-registerbutton.style.height="15%";
-registerbutton.style.width="100%";
-registerbutton.style.margin="6px 0px 6px 0px"
-loginDiv.appendChild(registerbutton);
-    document.body.appendChild(loginDiv);
-    console.log(loginDiv);
+    let REGISTER = document.createElement("button");
+    console.log(REGISTER);
+    REGISTER.className="register";
+    REGISTER.textContent="Register"
+   
+    form.appendChild(REGISTER);
+    // Créer un élément pour afficher les erreurs du serveur
+    let serverErrorSpan = document.createElement("span");
+    serverErrorSpan.id = "server_error";
+    form.appendChild(serverErrorSpan);
+
+    // Ajouter le formulaire à la div container
+    formContainer.appendChild(form);
+
+    // Ajouter la div container au body
+    document.body.appendChild(formContainer);
 }
+
+// Appeler la fonction pour créer le formulaire
+
+
+
 
 
 submit_post.onclick = async function (event) {
