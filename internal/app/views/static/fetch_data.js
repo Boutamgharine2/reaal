@@ -3,6 +3,7 @@ import { reacPost } from "./reactPost.js";
 import { comment } from "./comment.js";
 import { Registred } from "./registred.js";
 import { filter } from "./filter.js";
+import { Login } from "./verify_login.js";
 // import { reactComment } from "./reactComment.js";
 
 
@@ -129,6 +130,7 @@ function createLoginForm() {
 
     // Ajouter la div container au body
     document.body.appendChild(formContainer);
+    Login()
 }
 
 // Appeler la fonction pour créer le formulaire

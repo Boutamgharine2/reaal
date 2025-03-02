@@ -1,46 +1,52 @@
 
+
+export function Login(params) {
+  console.log(document.querySelector(".login_form"));
+  
+  document.querySelector(".login_form").addEventListener("submit", async function (event) {
+  
+    event.preventDefault()
+    const errorDiv = document.getElementById("server_error");
+    const usernameoremail = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+  
+  
+  
+  
+    sendHttpRequest('POST', '/login', {
+      emailorusername: usernameoremail,
+      password: password,
+  
+    }).then(responseData => {
+      
+      if (responseData.isValidData) {
+        window.location.href = "/"
+  
+        
+      }
+  
+    })
+      .catch(err => {
+   
+        if (err.errserver) {
+          errorDiv.innerHTML = "internal problem try later"
+          errorDiv.style.color = "red"
+  
+        } else {
+          errorDiv.innerHTML = "Your password or username is incorrect.!"
+          errorDiv.style.color = "red"
+          errorDiv.style.margin = "5px"
+        }
+  
+  
+  
+      });
+  
+  })
+}
 // hadi ana (anouar) lizdtha adrrari
 
-document.querySelector(".login_form").addEventListener("submit", async function (event) {
 
-  event.preventDefault()
-  const errorDiv = document.getElementById("server_error");
-  const usernameoremail = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-
-
-
-  sendHttpRequest('POST', '/login', {
-    emailorusername: usernameoremail,
-    password: password,
-
-  }).then(responseData => {
-    
-    if (responseData.isValidData) {
-      window.location.href = "/"
-
-      
-    }
-
-  })
-    .catch(err => {
- 
-      if (err.errserver) {
-        errorDiv.innerHTML = "internal problem try later"
-        errorDiv.style.color = "red"
-
-      } else {
-        errorDiv.innerHTML = "Your password or username is incorrect.!"
-        errorDiv.style.color = "red"
-        errorDiv.style.margin = "5px"
-      }
-
-
-
-    });
-
-})
 
 
 
