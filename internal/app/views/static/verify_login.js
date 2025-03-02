@@ -8,16 +8,30 @@ export function Login(params) {
     event.preventDefault()
     const errorDiv = document.getElementById("server_error");
     const usernameoremail = document.getElementById("email").value;
+    console.log(usernameoremail);
+    
     const password = document.getElementById("password").value;
+    console.log(password);
+
   
   
   
   
-    sendHttpRequest('POST', '/login', {
-      emailorusername: usernameoremail,
-      password: password,
-  
-    }).then(responseData => {
+    let response = await fetch("/login",{
+    method: "POST",
+  headers: {
+    "Content-Type": "application/Json",
+  },
+  body: JSON.stringify({
+    emailorusername: usernameoremail,
+    password: password,
+
+  }),
+
+    });
+    response.then(responseData => {
+      console.log(responseData.JSON());
+      
       
       if (responseData.isValidData) {
         window.location.href = "/"

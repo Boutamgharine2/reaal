@@ -46,6 +46,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	page := []string{"internal/app/views/templates/pages/login.html"}
 
 	var G utils.User
+	fmt.Println(r.Method)
 	if r.Method == http.MethodGet {
 		utils.ExecuteTemplate(w, page, nil)
 	} else if r.Method == http.MethodPost {
@@ -56,6 +57,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		response := make(map[string]bool)
 
 		err := json.NewDecoder(r.Body).Decode(&request)
+		fmt.Println(request)
 		if err != nil {
 
 			response["isValidData"] = false
@@ -76,6 +78,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 		isAuthneticated, err := authenticateUser(utils.Db1.Db, request.Emailorusername, request.Password)
 		if err != nil {
+			fmt.Println("ohoho")
 			response["isValidData"] = false
 
 			// toooo

@@ -102,13 +102,6 @@ function createLoginForm() {
     passwordInput.required = true;
     form.appendChild(passwordInput);
 
-    // Créer le label pour le bouton de connexion
-    // let loginButtonLabel = document.createElement("label");
-    // loginButtonLabel.className = "login_button";
-    // loginButtonLabel.textContent = "Login";
-    // form.appendChild(loginButtonLabel);
-
-    // Créer l'input de soumission du formulaire
     let submitInput = document.createElement("input");
     submitInput.type = "submit";
     submitInput.value = "Login";
