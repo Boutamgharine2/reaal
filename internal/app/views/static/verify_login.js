@@ -1,48 +1,39 @@
 
 
-export function Login(params) {
-  console.log(document.querySelector(".login_form"));
-  
-  document.querySelector(".login_form").addEventListener("submit", async function (event) {
-  
-    event.preventDefault()
-    const errorDiv = document.getElementById("server_error");
-    const usernameoremail = document.getElementById("email").value;
-    console.log(usernameoremail);
+  export function Login() {
+    console.log(document.querySelector(".login_form"));
     
-    const password = document.getElementById("password").value;
-    console.log(password);
-
-  
-  
-  
-  
-    let response = await fetch("/login",{
-    method: "POST",
-  headers: {
-    "Content-Type": "application/Json",
-  },
-  body: JSON.stringify({
-    emailorusername: usernameoremail,
-    password: password,
-
-  }),
-
-    });
-    response.then(responseData => {
-      console.log(responseData.JSON());
+    document.querySelector(".login_form").addEventListener("submit", async function (event) {
+    
+      event.preventDefault()
+      const errorDiv = document.getElementById("server_error");
+      const usernameoremail = document.getElementById("email").value;
+      console.log(usernameoremail);
       
+      const password = document.getElementById("password").value;
+      console.log(password);
+
+    
+      let response = await fetch("/login",{
+      method: "POST",
+    headers: {
+      "Content-Type": "application/Json",
+    },
+    body: JSON.stringify({
+      emailorusername: usernameoremail,
+      password: password,
+
+    }),
+
+      }).then((response) => {
+     
+        return response.json();
       
-      if (responseData.isValidData) {
-        window.location.href = "/"
-  
-        
-      }
-  
-    })
-      .catch(err => {
-   
-        if (err.errserver) {
+      }).then((result) =>{
+      
+      if (result.isValidData){
+        window.location.href="/";
+      }else if (result.errserver) {
           errorDiv.innerHTML = "internal problem try later"
           errorDiv.style.color = "red"
   
@@ -56,9 +47,48 @@ export function Login(params) {
   
       });
   
-  })
-}
-// hadi ana (anouar) lizdtha adrrari
+  }
+)}
+      // console.log(responseData.json())
+        
+    
+        
+        
+        
+        //const data = responseData.json()
+      //  console.log(data.value);
+        
+      // console.log(data.isValidData);
+        
+        
+      /*  if (data.isValidData) {
+          console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+          
+          window.location.href = "/"
+    
+          
+        }
+    
+      })
+        .catch(err => {
+    
+          if (err.errserver) {
+            errorDiv.innerHTML = "internal problem try later"
+            errorDiv.style.color = "red"
+    
+          } else {
+            errorDiv.innerHTML = "Your password or username is incorrect.!"
+            errorDiv.style.color = "red"
+            errorDiv.style.margin = "5px"
+          }
+    
+    
+    
+        });
+    
+    })
+  }*/
+  // hadi ana (anouar) lizdtha adrrari
 
 
 
@@ -66,43 +96,44 @@ export function Login(params) {
 
 
 
+/*
+  const sendHttpRequest = (method, url, data) => {
 
-const sendHttpRequest = (method, url, data) => {
+    const promise = new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open(method, url);
 
-  const promise = new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open(method, url);
+      xhr.responseType = 'json';
 
-    xhr.responseType = 'json';
-
-    if (data) {
-      xhr.setRequestHeader('Content-Type', 'application/json');
-    }
-
-    xhr.onload = () => {
-      if (xhr.status >= 400) {
-        reject(xhr.response);
-      } else {
-        resolve(xhr.response);
+      if (data) {
+        xhr.setRequestHeader('Content-Type', 'application/json');
       }
-    };
 
-    xhr.onerror = () => {
-      reject('Something went wrong!');
-    };
+      xhr.onload = () => {
+        if (xhr.status >= 400) {
+          reject(xhr.response);
+        } else {
+          resolve(xhr.response);
+        }
+      };
 
-    xhr.send(JSON.stringify(data));
-  });
-  return promise;
-};
+      xhr.onerror = () => {
+        reject('Something went wrong!');
+      };
 
-
-
-
-
-
-
-
-
+      xhr.send(JSON.stringify(data));
+    });
+    return promise;
+  };
 
 
+
+
+
+
+
+
+
+
+
+*/

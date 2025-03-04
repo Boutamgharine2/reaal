@@ -4,6 +4,7 @@ import { comment } from "./comment.js";
 import { Registred } from "./registred.js";
 import { filter } from "./filter.js";
 import { Login } from "./verify_login.js";
+import { Registration } from "./verify_registration.js";
 // import { reactComment } from "./reactComment.js";
 
 
@@ -17,8 +18,9 @@ let div_pop = document.querySelector(".form-popup");
 //div_pop.style.display="none";
 let cancel_botton =document.getElementById("cancel");
 let login_botton = document.getElementById("login_button");
+let register_button = document.getElementById("register_button");
 const pop = document.querySelector(".form-container")
-console.log(login_botton);
+console.log(register_button);
 
 
 //pop.style.display ="block"
@@ -40,23 +42,20 @@ login_botton.onclick=()=>{
    
     createLoginForm() ;
 };
+register_button .onclick=()=>{
+    const cnt = document.getElementById("container");
+    
+    
+    cnt.remove();
+    document.querySelector(".navbar").style.display="none";
+   
+    CreatRegisterForm();
+};
 
 
-function openForm() {
-    //debugger    
-    document.querySelector(".form-popup").style.display="block"
-    pop.style.display = "block";
-    
-    
-    
-    
-}
-function closeForm() {
-    pop.style.display = "none";
-    document.body.removeChild(".pop_up");
 
-    
-}
+
+
 function createLoginForm() {
     // Créer la div contenant tout le formulaire
     let formContainer = document.createElement("div");
@@ -126,8 +125,34 @@ function createLoginForm() {
     Login()
 }
 
-// Appeler la fonction pour créer le formulaire
+function CreatRegisterForm(){
 
+    let formContainer = document.createElement("div");
+    formContainer.className = "form-container";
+    formContainer.innerHTML=    `<h2>Register</h2>
+        <form class="regsiter_form" method="post">
+            <label for="username">USER NAME</label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <br>
+            <span id="error0"></span>
+            <label for="email">EMAIL *</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email here">
+            <br>
+            <span id="error1"></span>
+            <label for="password">PASSWORD *</label>
+            <input type="password" id="password" name="password" placeholder="Setup your password">
+            <br>
+            <span id="error2"></span>
+            <label for="password2">REPEAT YOUR PASSWORD *</label>
+            <input type="password" id="password2" name="password2" placeholder="Repeat your password">
+            <br>
+            <span id="error3"></span>
+            <input type="submit" id="submit" value="Register">
+            <div id="server_error"></div>
+        </form>`
+        document.body.appendChild(formContainer);
+        Registration();
+}
 
 
 

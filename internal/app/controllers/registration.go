@@ -3,6 +3,7 @@ package controllers
 import (
 	"database/sql"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"regexp"
 	"strings"
@@ -39,6 +40,7 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 
 		// Décoder le corps de la requête JSON
 		err := json.NewDecoder(r.Body).Decode(&request)
+		fmt.Println(request)
 
 		if err != nil {
 			response["isValidata"] = false

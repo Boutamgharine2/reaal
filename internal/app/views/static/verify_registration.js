@@ -1,5 +1,18 @@
 
-/// hadi ana(anouar) lizdtha 
+class User {
+    constructor(name,username,age,gender,email,password){
+        this.name=name;
+        this.username=username;
+        this.age=age;
+        this.gender=gender;
+        this.email=email;
+        this.password=password;
+
+    }
+}
+export function Registration(){ 
+
+
 
 document.querySelector(".regsiter_form").addEventListener("submit", function (event) {
     event.preventDefault();
@@ -62,12 +75,14 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
     if (!validconfpassword || !validpassword || !validemail || !validusername) {
         return
     }
+    const person = new User(name,username,age,gender,email,password)
 
-    sendHttpRequest('POST', '/register', {
-        email: email,
-        username: username,
-        password: password,
-    }).then(responseData => {
+    fetch( '/register',{
+        method:"POST",
+        headers: {
+            "Content-Type": "application/Json",
+          },
+        body :JSON.stringify (person)}).then(responseData => {
 
         if (!responseData.emilorusernameexsist) {
             window.location.href = "/login"
@@ -94,6 +109,7 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
         });
 
 });
+}
 function EmailIsValid(email) {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return re.test(email);
