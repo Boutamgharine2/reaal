@@ -135,6 +135,24 @@ function CreatRegisterForm(){
             <input type="text" id="username" name="username" placeholder="Username">
             <br>
             <span id="error0"></span>
+            <label for ="age">Age *</label>
+            <input type="number" id = "age" name="age" >
+            <br>
+            <span id="error4"></span>
+            <label for="gender">Select your gender: *</label>
+            <select id="gender" name="select">
+            <option value="male" >Mal</option>
+            <option value="feminine">feminine</option>
+            </select>
+            <br>
+            <span id="error5"></span>
+            <label for="firstname">Your  First Name*</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter your First Name">
+            <span id="error6"></span>
+            <label for="lastname">Your  Last Name*</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter your  Last Name">
+            <span id="error7"></span>
+            <br>
             <label for="email">EMAIL *</label>
             <input type="email" id="email" name="email" placeholder="Enter your email here">
             <br>
