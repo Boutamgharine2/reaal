@@ -374,7 +374,15 @@ fieldset {
     margin-right: 10px;
   }
   
-
+span {
+    font-size: 14px;
+    color: red;
+}
+#age {
+    size: 16px;
+    height: 29px;
+    width: 51px;
+  }
 
 
 

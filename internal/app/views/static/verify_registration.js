@@ -36,11 +36,11 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
     let validage = false;
     let validgender = false;  
     debugger   
-    if (First_Name.length < 25 && First_Name.length >= 3 && Validstring(First_Name) == true) {
+    if (First_Name.length < 25 && First_Name.length >= 3 && Validstring(First_Name) ) {
         validfirstname = true;
 
     }
-    if (Laste_Name.length < 25 && Laste_Name.length >= 3 && Validstring(Laste_Name) == true) {
+    if (Laste_Name.length < 25 && Laste_Name.length >= 3 && Validstring(Laste_Name) ) {
         validlastname = true;
 
     }
@@ -66,33 +66,52 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
     if (password == confpassword) {
         validconfpassword = true;
     }
-    if (!va)
+    if (!validfirstname){
+        let myerror = document.getElementById("error6");
+        myerror.innerHTML = "your first name is invalid";
+        
+
+    }
+    if (!validlastname){
+        let myerror = document.getElementById("error7");
+        myerror.innerHTML = "your last name is invalid";
+
+    }
+    if (!validgender){
+        let myerror = document.getElementById("error5");
+        myerror.innerHTML = "We accept only male or female gender!";
+    }
+    if (!validage){
+        let myerror = document.getElementById("error4");
+        myerror.innerHTML =  "Your age should be between 15 and 80!";
+    }
+    
+
 
     if (!validusername) {
         let myerror = document.getElementById("error0");
         myerror.innerHTML = "invalid username";
-        myerror.style.color = 'red';
 
 
     }
     if (!validemail) {
         let myerror = document.getElementById("error1");
         myerror.innerHTML = "invalid email";
-        myerror.style.color = 'red';
+        
 
 
     }
     if (!validpassword) {
         let myerror = document.getElementById("error2");
         myerror.innerHTML = "invalid password";
-        myerror.style.color = 'red';
+        
 
 
     }
     if (!validconfpassword) {
         let myerror = document.getElementById("error3");
         myerror.innerHTML = "invalid confpassword";
-        myerror.style.color = 'red';
+        
 
 
     }

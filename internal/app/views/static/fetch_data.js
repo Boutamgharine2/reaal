@@ -136,8 +136,7 @@ function CreatRegisterForm(){
             <br>
             <span id="error0"></span>
             <label for ="age">Age *</label>
-            <input type="number" id = "age" name="age" >
-            <br>
+            <input type="number" id = "age" name="age" >gi
             <span id="error4"></span>
             <label for="gender">Select your gender: *</label>
             <select id="gender" name="select">
