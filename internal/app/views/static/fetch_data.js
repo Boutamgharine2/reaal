@@ -8,6 +8,7 @@ import { Registration } from "./verify_registration.js";
 // import { reactComment } from "./reactComment.js";
 
 
+Navbar()
 let submit_post = document.querySelector(".post_btn")
 let post_title = document.querySelector(".post_title")
 let post_content = document.querySelector(".post_content")
@@ -19,20 +20,27 @@ let div_pop = document.querySelector(".form-popup");
 let cancel_botton =document.getElementById("cancel");
 let login_botton = document.getElementById("login_button");
 let register_button = document.getElementById("register_button");
-const pop = document.querySelector(".form-container")
+const pop = document.querySelector(".form-container");
 console.log(register_button);
 
 
-//pop.style.display ="block"
-// cancel_botton.onclick=()=>{
-//     div_pop.style.display="none";
-//     document.body.removeChild(div0);
-//     closeForm();
+let userid = await Registred()
+if (!userid) {
+    const cnt = document.getElementById("container");
+    
+    
+    cnt.remove();
+   // document.querySelector(".navbar").style.display="none";
+   
+   createLoginForm();
 
-    
-    
-    
-// };
+} else {
+
+
+
+}
+
+
 login_botton.onclick=()=>{
     const cnt = document.getElementById("container");
     
@@ -55,77 +63,7 @@ register_button .onclick=()=>{
 
 
 
-
-function createLoginForm() {
-    // Créer la div contenant tout le formulaire
-    let formContainer = document.createElement("div");
-    formContainer.className = "form-container";
-
-    // Créer le titre du formulaire
-    let h2 = document.createElement("h2");
-    h2.textContent = "Login";
-    formContainer.appendChild(h2);
-
-    // Créer le formulaire
-    let form = document.createElement("form");
-    form.method = "post";
-    form.className = "login_form";
-
-    // Créer le label pour l'email ou le nom d'utilisateur
-    let labelEmail = document.createElement("label");
-    labelEmail.setAttribute("for", "email");
-    labelEmail.textContent = "EMAIL OR USERNAME:";
-    form.appendChild(labelEmail);
-
-    // Créer l'input pour l'email ou le nom d'utilisateur
-    let emailInput = document.createElement("input");
-    emailInput.type = "text";
-    emailInput.id = "email";
-    emailInput.name = "emailorusername";
-    emailInput.placeholder = "Email or Username";
-    emailInput.required = true;
-    form.appendChild(emailInput);
-
-    // Créer le label pour le mot de passe
-    let labelPassword = document.createElement("label");
-    labelPassword.setAttribute("for", "password");
-    labelPassword.textContent = "PASSWORD:";
-    form.appendChild(labelPassword);
-
-    // Créer l'input pour le mot de passe
-    let passwordInput = document.createElement("input");
-    passwordInput.type = "password";
-    passwordInput.id = "password";
-    passwordInput.name = "password";
-    passwordInput.placeholder = "Setup your password";
-    passwordInput.required = true;
-    form.appendChild(passwordInput);
-
-    let submitInput = document.createElement("input");
-    submitInput.type = "submit";
-    submitInput.value = "Login";
-    form.appendChild(submitInput);
-    
-    let REGISTER = document.createElement("button");
-    console.log(REGISTER);
-    REGISTER.className="register";
-    REGISTER.textContent="Register"
-   
-    form.appendChild(REGISTER);
-    // Créer un élément pour afficher les erreurs du serveur
-    let serverErrorSpan = document.createElement("span");
-    serverErrorSpan.id = "server_error";
-    form.appendChild(serverErrorSpan);
-
-    // Ajouter le formulaire à la div container
-    formContainer.appendChild(form);
-
-    // Ajouter la div container au body
-    document.body.appendChild(formContainer);
-    Login()
-}
-
-function CreatRegisterForm(){
+export function CreatRegisterForm(){
 
     let formContainer = document.createElement("div");
     formContainer.className = "form-container";
@@ -165,11 +103,39 @@ function CreatRegisterForm(){
             <input type="password" id="password2" name="password2" placeholder="Repeat your password">
             <br>
             <span id="error3"></span>
-            <input type="submit" id="submit" value="Register">
+            <input type="submit" id="submit" value="Register" >
             <div id="server_error"></div>
         </form>`
         document.body.appendChild(formContainer);
         Registration();
+}
+
+
+function createLoginForm() {
+    
+
+    // Créer la div contenant tout le formulaire
+    let formContainer = document.createElement("div");
+    formContainer.className = "form-container";
+
+   formContainer.innerHTML=` <h2>Login</h2>
+            <form method="post" class="login_form">
+                <label for="email">EMAIL OR USERNAME:</label>
+                <input type="text" id="email" name="emailorusername" placeholder="Email or Username" >
+
+                <label for="password">PASSWORD:</label>
+                <input type="password" id="password" name="password" placeholder="Setup your password" >
+
+                <input type="submit" value="Login">
+
+                <button type="button" class="register" id="Register">Register</button>
+
+                <span id="server_error"></span>
+               
+            </form>
+`
+    document.body.appendChild(formContainer);
+    Login()
 }
 
 
@@ -505,6 +471,19 @@ filter()
 
 
 
+/******************************************************navebar functio**************************************************************************** */
+function  Navbar(){
 
+    const navbardiv = document.createElement("div");
+    navbardiv.className="navbar";
+    navbardiv.innerHTML=` <div>
+            <a href="/" class="button">Home</a>
+        </div>
+        <div class="SiiiiiiiiiiiiiiiR">
+            <button  class="login_button" id="login_button">Login</button>
+            <button  class="register_button" id="register_button">Register</button>
+        </div>`;
+        document.body.prepend(navbardiv);
 
+}
 

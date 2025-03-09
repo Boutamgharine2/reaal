@@ -247,7 +247,10 @@ fieldset {
     padding: 20px;
     margin-bottom: 20px;
 }
-
+span {
+    font-size: 14px;
+    color: red;
+}
 
 .comment_react_buttons_wrapper {
     display: flex;

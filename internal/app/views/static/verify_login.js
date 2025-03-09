@@ -1,7 +1,18 @@
 
+import{CreatRegisterForm} from "./fetch_data.js";
+  
 
-  export function Login() {
-    console.log(document.querySelector(".login_form"));
+let form = document.getElementById("Register");
+console.log(form);
+
+
+export function Login() {
+  let form = document.querySelector(".form-container");
+
+  document.querySelector(".register").addEventListener("click",()=>{ 
+    form.remove();
+     CreatRegisterForm();
+  })
     
     document.querySelector(".login_form").addEventListener("submit", async function (event) {
     
@@ -48,7 +59,8 @@
       });
   
   }
-)}
+)
+}
       // console.log(responseData.json())
         
     
