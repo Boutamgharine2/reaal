@@ -77,6 +77,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 
 		isAuthneticated, err := authenticateUser(utils.Db1.Db, request.Emailorusername, request.Password)
+		fmt.Println(err);
 		if err != nil {
 			fmt.Println("ohoho")
 			response["isValidData"] = false
@@ -88,9 +89,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 		if isAuthneticated {
 
-			//   new session
-			//???????????????????????????????
-			/// Wach USERNAME wla EMAIL and WHY
+			
 			id := CheckIsEmailOrUsername(request.Emailorusername, utils.Db1.Db)
 
 			if Error || id == 0 {

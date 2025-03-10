@@ -1,5 +1,5 @@
 
-import{CreatRegisterForm} from "./fetch_data.js";
+import{CreatRegisterForm} from "./DOM_function.js";
   
 
 let form = document.getElementById("Register");

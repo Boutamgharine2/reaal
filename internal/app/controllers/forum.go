@@ -10,20 +10,10 @@ import (
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	page := []string{"internal/app/views/templates/pages/forum.html"}
-	if r.URL.Path != "/" {
-		utils.MessageError(w, r, http.StatusNotFound, "Page Not Found!!!!")
-		return
+	
+		utils.ExecuteTemplate(w, page, "")
 	}
 
-	if r.Method == "POST" {
-
-		utils.ExecuteTemplate(w, page, "")
-
-	} else if r.Method == "GET" {
-		utils.ExecuteTemplate(w, page, "")
-		return
-	}
-}
 
 func CheckRegistration(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("session_id")

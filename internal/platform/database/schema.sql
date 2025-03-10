@@ -1,8 +1,12 @@
 -- Création de la table users
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    email TEXT UNIQUE NOT NULL CHECK(LENGTH(email) < 70),
+    first_name  TEXT UNIQUE NOT NULL CHECK(LENGTH(first_name) < 20),
+    last_name  TEXT UNIQUE NOT NULL CHECK(LENGTH(last_name) < 20),
     username TEXT UNIQUE NOT NULL CHECK(LENGTH(username) < 20),
+    gender  TEXT CHECK(gender IN ('male', 'feminine')),
+    age INTEGER NOT NULL,
+    email TEXT UNIQUE NOT NULL CHECK(LENGTH(email) < 70),
     password_hash TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

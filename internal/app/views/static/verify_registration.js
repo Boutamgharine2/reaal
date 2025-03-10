@@ -1,3 +1,17 @@
+import {createLoginForm}from "./DOM_function.js"
+
+
+
+
+
+
+
+
+
+
+const cnt = document.querySelector(".form-container")
+
+
 class User {
     constructor(first_name,laste_name,username,age,gender,email,password,){
         this.first_name=first_name;
@@ -11,6 +25,16 @@ class User {
     }
 }
 export function Registration(){ 
+    
+    
+    const login_botton2 = document.getElementById("Login")
+    login_botton2.addEventListener("click",()=>{
+        const cnt = document.querySelector(".form-container")
+
+        cnt.remove();
+        createLoginForm();
+
+    })
 
 
 
@@ -34,7 +58,6 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
     let validlastname = false;
     let validage = false;
     let validgender = false;  
-    debugger   
     if (First_Name.length < 25 && First_Name.length >= 3 && Validstring(First_Name) ) {
         validfirstname = true;
 
@@ -114,10 +137,13 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
 
 
     }
+    debugger
     if (!validconfpassword || !validpassword || !validemail || !validusername) {
         return
     }
-    const person = new User(name,username,age,gender,email,password)
+    const person = new User(First_Name,Laste_Name,username,Age,Gender,email,password)
+    console.log(person);
+    
 
     fetch( '/register',{
         method:"POST",
@@ -127,11 +153,16 @@ document.querySelector(".regsiter_form").addEventListener("submit", function (ev
         body :JSON.stringify (person)}).then(responseData => {
 
         if (!responseData.emilorusernameexsist) {
-            window.location.href = "/login"
+            const cnt = document.querySelector(".form-container")
+
+           cnt.remove();
+           createLoginForm();
         }
 
     })
         .catch(err => {
+            console.log(err);
+            
             if (err.emilorusernameexsist) {
                 errorDiv.textContent = " your email or username already exists!!!"
                 errorDiv.style.color = `red`

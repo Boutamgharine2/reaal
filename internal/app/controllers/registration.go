@@ -14,9 +14,14 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+
 type Request struct {
-	Email    string `json:"email"`
+	First_name string  `json:"first_name"`
+	Laste_name string  `json:"laste_name"`
 	Username string `json:"username"`
+	Age int         `json:"age"`
+	Gender string    `json:"gender"`     
+	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
@@ -40,6 +45,7 @@ func Registration(w http.ResponseWriter, r *http.Request) {
 
 		// Décoder le corps de la requête JSON
 		err := json.NewDecoder(r.Body).Decode(&request)
+		fmt.Println(r.Body)
 		fmt.Println(request)
 
 		if err != nil {
