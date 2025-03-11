@@ -1,5 +1,5 @@
 import {createLoginForm}from "./login.js"
-import { navigateTo } from "./fetch_data.js";
+import { navigateTo } from "./index.js";
 
 
 

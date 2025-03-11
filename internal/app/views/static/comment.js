@@ -1,4 +1,4 @@
-import { ADDElement, Get_Data } from "./fetch_data.js"
+import { ADDElement, Get_Data } from "./index.js"
 import { Registred } from "./registred.js"
 import { reactComment } from "./reactComment.js";
 let ShowComments = true;

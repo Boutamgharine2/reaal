@@ -1,6 +1,6 @@
 import { Registred } from "./registred.js";
-import { Get_Data } from "./fetch_data.js";
-import { F } from "./fetch_data.js";
+import { Get_Data } from "./index.js";
+import { F } from "./index.js";
 export async function filter() {
   let filterbutton = document.querySelector(".filterbutton");
 

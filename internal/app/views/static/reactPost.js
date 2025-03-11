@@ -1,4 +1,4 @@
-import { updateLikeandDislike } from "./fetch_data.js"
+import { updateLikeandDislike } from "./index.js"
 import { Registred } from "./registred.js"
 
 export function reacPost(postsData) {

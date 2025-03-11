@@ -35,9 +35,9 @@ var (
 
 func Registration(w http.ResponseWriter, r *http.Request) {
 
-	page := []string{"internal/app/views/templates/pages/register.html"}
+	// page := []string{"internal/app/views/templates/pages/register.html"}
 	if r.Method == http.MethodGet {
-		utils.ExecuteTemplate(w, page, nil)
+		// utils.ExecuteTemplate(w, page, nil)
 	} else if r.Method == http.MethodPost {
 
 		request := Request{}

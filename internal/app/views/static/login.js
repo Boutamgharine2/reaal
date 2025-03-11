@@ -1,5 +1,5 @@
 import{CreatRegisterForm} from "./verify_registration.js";
-import { navigateTo } from "./fetch_data.js";
+import { navigateTo } from "./index.js";
 
 
 

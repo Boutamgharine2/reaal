@@ -43,12 +43,12 @@ func generateSessionID() string {
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	page := []string{"internal/app/views/templates/pages/login.html"}
+	// page := []string{"internal/app/views/templates/pages/login.html"}
 
 	var G utils.User
 	fmt.Println(r.Method)
 	if r.Method == http.MethodGet {
-		utils.ExecuteTemplate(w, page, nil)
+		// utils.ExecuteTemplate(w, page, nil)
 	} else if r.Method == http.MethodPost {
 
 		// w.Header().Set("Content-Type", "application/json")

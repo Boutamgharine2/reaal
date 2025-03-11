@@ -1,4 +1,4 @@
-import { ADDElement } from "./fetch_data.js";
+import { ADDElement } from "./index.js";
 export function InitPost(postsData) {
 
    

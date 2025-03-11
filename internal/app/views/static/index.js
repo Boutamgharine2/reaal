@@ -6,17 +6,17 @@ import { filter } from "./filter.js";
 import {CreatRegisterForm} from "./verify_registration.js"
 import {createLoginForm} from "./login.js"
 import { Navbar } from "./DOM_function.js";
+import { PageError } from "./error.js";
 
 let submit_post = document.querySelector(".post_btn")
 let post_title = document.querySelector(".post_title")
 let post_content = document.querySelector(".post_content")
 let post_category = document.querySelectorAll(".category")
 let load_more = document.querySelector(".load_more")
+console.log("hhhhhhhhhhhhhhhhhhhhhhhhh");
 
-// if (location.pathname =! "/"){
-//     console.log("jddsjdsfhjf");
-    
-// }
+debugger
+console.log("ana hna djsjsd jkcjj");
 
 export const navigateTo = url =>{
     history.pushState(null,null,url);
@@ -26,7 +26,7 @@ const router = async() => {
     const routes = [
         {path: "/", view:()=>console.log("home")},
           {path: "/login", view:createLoginForm},
-            {path: "/registers", view:CreatRegisterForm}
+            {path: "/register", view:CreatRegisterForm}
     ]
     let find = routes.map(route => {
         return {
@@ -39,14 +39,16 @@ const router = async() => {
     
     if (!match) {
         match ={
-           route : routes[0],
+           route : {path:location.pathname,view:PageError},
            isMatch: true 
         } 
     }
-    (match.route.view());
+    match.route.view();
     
 } 
 document.addEventListener("DOMContentLoaded",()=>{
+    console.log("uuuuuu");
+    
     
     router()
 })
@@ -58,18 +60,14 @@ window.addEventListener("popstate", router)
 let userid = await Registred()
 if (!userid) {
     
-    navigateTo("/login")
+   // navigateTo("/login")
     
     
    
   
    
 
-} else {
-
-
-
-}
+} 
 
 
 submit_post.onclick = async function (event) {
