@@ -1,4 +1,64 @@
-import {createLoginForm}from "./DOM_function.js"
+import {createLoginForm}from "./login.js"
+import { navigateTo } from "./fetch_data.js";
+
+
+
+
+export function CreatRegisterForm(){
+    const cnt = document.getElementById("container");
+    
+    
+    
+    cnt.innerHTML="";
+    
+
+    let formContainer = document.getElementById("container");
+   // formContainer.className = "form-container";
+    formContainer.innerHTML=    `<h2>Register</h2>
+        <form class="regsiter_form" method="post">
+            <label for="username">USER NAME</label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            <br>
+            <span id="error0"></span>
+            <label for ="age">Age *</label>
+            <input type="number" id = "age" name="age" >
+            <span id="error4"></span>
+            <label for="gender">Select your gender: *</label>
+            <select id="gender" name="select">
+            <option value="male" >Mal</option>
+            <option value="feminine">feminine</option>
+            </select>
+            <br>
+            <span id="error5"></span>
+            <label for="firstname">Your  First Name*</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter your First Name">
+            <span id="error6"></span>
+            <label for="lastname">Your  Last Name*</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter your  Last Name">
+            <span id="error7"></span>
+            <br>
+            <label for="email">EMAIL *</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email here">
+            <br>
+            <span id="error1"></span>
+            <label for="password">PASSWORD *</label>
+            <input type="password" id="password" name="password" placeholder="Setup your password">
+            <br>
+            <span id="error2"></span>
+            <label for="password2">REPEAT YOUR PASSWORD *</label>
+            <input type="password" id="password2" name="password2" placeholder="Repeat your password">
+            <br>
+            <span id="error3"></span>
+            <input type="submit" id="submit" value="Register" >
+            <div id="server_error"></div>
+            <a href="/login"  class="login" id="Login">Login</a>
+             
+
+
+        </form>`
+      //  document.body.appendChild(formContainer);
+        Registration();
+}
 
 
 
@@ -25,13 +85,23 @@ class User {
     }
 }
 export function Registration(){ 
+    document.getElementById("Login").addEventListener("click",(e)=>{
+    
+        e.preventDefault();
+        console.log(e.target.href);
+        
+        navigateTo(e.target.href);
+    
+    
+    
+    })
     
     
     const login_botton2 = document.getElementById("Login")
     login_botton2.addEventListener("click",()=>{
         const cnt = document.querySelector(".form-container")
 
-        cnt.remove();
+        cnt.innerHTML="";
         createLoginForm();
 
     })

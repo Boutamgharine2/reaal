@@ -3,8 +3,8 @@ import { reacPost } from "./reactPost.js";
 import { comment } from "./comment.js";
 import { Registred } from "./registred.js";
 import { filter } from "./filter.js";
-import {CreatRegisterForm} from "./DOM_function.js"
-import {createLoginForm} from "./DOM_function.js"
+import {CreatRegisterForm} from "./verify_registration.js"
+import {createLoginForm} from "./login.js"
 import { Navbar } from "./DOM_function.js";
 
 let submit_post = document.querySelector(".post_btn")
@@ -18,18 +18,52 @@ let load_more = document.querySelector(".load_more")
     
 // }
 
+export const navigateTo = url =>{
+    history.pushState(null,null,url);
+    router()
+};
+const router = async() => {
+    const routes = [
+        {path: "/", view:()=>console.log("home")},
+          {path: "/login", view:createLoginForm},
+            {path: "/registers", view:CreatRegisterForm}
+    ]
+    let find = routes.map(route => {
+        return {
+            route: route,
+            isMatch: location.pathname === route.path
+        }
+    })
+    console.log(find);
+    let match = find.find(findss => findss.isMatch)
+    
+    if (!match) {
+        match ={
+           route : routes[0],
+           isMatch: true 
+        } 
+    }
+    (match.route.view());
+    
+} 
+document.addEventListener("DOMContentLoaded",()=>{
+    
+    router()
+})
+
+window.addEventListener("popstate", router)
+
 
 
 let userid = await Registred()
 if (!userid) {
-    const cnt = document.getElementById("container");
+    
+    navigateTo("/login")
     
     
-    
-    cnt.remove();
-   // document.querySelector(".navbar").style.display="none";
    
-   createLoginForm();
+  
+   
 
 } else {
 
